@@ -1,6 +1,6 @@
 package ua.azbest.parser;
 
-import azbest.parts.Videocard;
+import ua.azbest.part.Videocard;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
