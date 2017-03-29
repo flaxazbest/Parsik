@@ -7,54 +7,47 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.azbest.controller.MainController">
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<AnchorPane id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.azbest.controller.MainController">
     <children>
-        <Rectangle fx:id="colorRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="14.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="346.0" />
-
-        <Button fx:id="button" layoutX="291.0" layoutY="469.0" mnemonicParsing="false" onAction="#onClickMethod" text="Convert" />
-
-        <Label layoutX="22.0" layoutY="72.0" text="R:" />
-        <Label layoutX="22.0" layoutY="98.0" text="G:" />
-        <Label layoutX="22.0" layoutY="123.0" text="B:" />
-        <TextField fx:id="textR" alignment="CENTER" layoutX="39.0" layoutY="68.0" prefHeight="25.0" prefWidth="42.0" text="030" />
-        <TextField fx:id="textG" alignment="CENTER" editable="false" layoutX="39.0" layoutY="93.0" prefHeight="25.0" prefWidth="42.0" text="144" />
-        <TextField fx:id="textB" alignment="CENTER" editable="false" layoutX="39.0" layoutY="118.0" prefHeight="25.0" prefWidth="42.0" text="255" />
-        <Slider fx:id="sliderR" layoutX="93.0" layoutY="74.0" max="255.0" prefHeight="14.0" prefWidth="256.0" value="30.0" />
-        <Slider fx:id="sliderG" layoutX="93.0" layoutY="99.0" max="255.0" prefHeight="14.0" prefWidth="256.0" value="144.0" />
-        <Slider fx:id="sliderB" layoutX="93.0" layoutY="124.0" max="255.0" prefHeight="14.0" prefWidth="256.0" value="255.0" />
-
-        <Label layoutX="22.0" layoutY="169.0" text="C:" />
-        <Label layoutX="22.0" layoutY="195.0" text="M:" />
-        <Label layoutX="22.0" layoutY="219.0" text="Y:" />
-        <Label layoutX="22.0" layoutY="244.0" text="K:" />
-        <TextField fx:id="textC" alignment="CENTER" editable="false" layoutX="39.0" layoutY="165.0" prefHeight="25.0" prefWidth="42.0" text="0.88" />
-        <TextField fx:id="textM" alignment="CENTER" editable="false" layoutX="39.0" layoutY="190.0" prefHeight="25.0" prefWidth="42.0" text="0.44" />
-        <TextField fx:id="textY" alignment="CENTER" editable="false" layoutX="39.0" layoutY="215.0" prefHeight="25.0" prefWidth="42.0" text="0.00" />
-        <TextField fx:id="textK" alignment="CENTER" editable="false" layoutX="39.0" layoutY="240.0" prefHeight="25.0" prefWidth="42.0" text="0.00" />
-        <Slider fx:id="sliderC" blockIncrement="0.05" layoutX="93.0" layoutY="171.0" max="1.0" prefHeight="14.0" prefWidth="256.0" value="0.88" />
-        <Slider fx:id="sliderM" blockIncrement="0.05" layoutX="93.0" layoutY="196.0" max="1.0" prefHeight="14.0" prefWidth="256.0" value="0.44" />
-        <Slider fx:id="sliderY" blockIncrement="0.05" layoutX="93.0" layoutY="221.0" max="1.0" prefHeight="14.0" prefWidth="256.0" value="0.00" />
-        <Slider fx:id="sliderK" blockIncrement="0.05" layoutX="93.0" layoutY="246.0" max="1.0" prefHeight="14.0" prefWidth="256.0" value="0.00" />
-
-        <Label layoutX="22.0" layoutY="289.0" text="H:" />
-        <Label layoutX="22.0" layoutY="315.0" text="S:" />
-        <Label layoutX="22.0" layoutY="340.0" text="V:" />
-        <TextField fx:id="textH" alignment="CENTER" editable="false" layoutX="39.0" layoutY="285.0" prefHeight="25.0" prefWidth="42.0" text="209" />
-        <TextField fx:id="textS" alignment="CENTER" editable="false" layoutX="39.0" layoutY="310.0" prefHeight="25.0" prefWidth="42.0" text="088" />
-        <TextField fx:id="textV" alignment="CENTER" editable="false" layoutX="39.0" layoutY="335.0" prefHeight="25.0" prefWidth="42.0" text="100" />
-        <Slider fx:id="sliderH" layoutX="93.0" layoutY="291.0" max="359.0" prefHeight="14.0" prefWidth="256.0" value="209" />
-        <Slider fx:id="sliderS" blockIncrement="0.05" layoutX="93.0" layoutY="316.0" max="1.0" prefHeight="14.0" prefWidth="256.0" value="0.88" />
-        <Slider fx:id="sliderV" blockIncrement="0.05" layoutX="93.0" layoutY="341.0" max="1.0" prefHeight="14.0" prefWidth="256.0" value="1.00" />
-
-        <Label layoutX="22.0" layoutY="386.0" text="H:" />
-        <Label layoutX="22.0" layoutY="412.0" text="S:" />
-        <Label layoutX="22.0" layoutY="437.0" text="L:" />
-        <TextField fx:id="textH1" alignment="CENTER" editable="false" layoutX="39.0" layoutY="382.0" prefHeight="25.0" prefWidth="42.0" text="209" />
-        <TextField fx:id="textS1" alignment="CENTER" editable="false" layoutX="39.0" layoutY="407.0" prefHeight="25.0" prefWidth="42.0" text="99.9" />
-        <TextField fx:id="textL" alignment="CENTER" editable="false" layoutX="39.0" layoutY="432.0" prefHeight="25.0" prefWidth="42.0" text="55.9" />
-        <Slider fx:id="sliderH1" layoutX="93.0" layoutY="388.0" max="359.0" prefHeight="14.0" prefWidth="256.0" value="209" />
-        <Slider fx:id="sliderS1" blockIncrement="0.05" layoutX="93.0" layoutY="413.0" max="0.999" prefHeight="14.0" prefWidth="256.0" value="0.999" />
-        <Slider fx:id="sliderL" blockIncrement="0.05" layoutX="93.0" layoutY="438.0" max="1.0" prefHeight="14.0" prefWidth="256.0" value="0.559" />
-
+        <TabPane tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab id="tabMain" closable="false" text="Головна">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <GridPane hgap="10.0" layoutX="14.0" layoutY="14.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <CheckBox fx:id="chb" mnemonicParsing="false" text="Відеокарта" />
+                                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" />
+                                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" />
+                                    </children>
+                                </GridPane>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab id="tabVideocard" text="Відеокарти">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
     </children>
 </AnchorPane>
