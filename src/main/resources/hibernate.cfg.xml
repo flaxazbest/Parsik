@@ -10,7 +10,7 @@
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">false</property>
-        <mapping class="ua.azbest.db.Employee"/>
-        <mapping class="ua.azbest.db.Session"/>
+        <mapping class="ua.azbest.dao.Employee"/>
+        <mapping class="ua.azbest.dao.Session"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,4 +1,4 @@
-package ua.azbest.db;
+package ua.azbest.dao;
 
 import java.util.List;
 import org.hibernate.Query;
