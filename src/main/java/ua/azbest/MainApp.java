@@ -14,7 +14,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        String fxmlFile = "/fxml/hello.fxml";
+        String fxmlFile = "/fxml/main.fxml";
         String styleFile = "/styles/slider.css";
         FXMLLoader loader = new FXMLLoader();
         Parent root = (Parent) loader.load(getClass().getResourceAsStream(fxmlFile));

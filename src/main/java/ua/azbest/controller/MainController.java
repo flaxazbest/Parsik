@@ -342,35 +342,39 @@ public class MainController {
         setListenerHSV();
         setListenerHSL();
 
+        /*
         vSlider.valueProperty().addListener( new ChangeListener<Number>() {
             public void changed(ObservableValue<? extends Number> ov,
                                 Number old_val, Number new_val) {
-/*
+
                 int r = (int)vSlider.getValue();
                 RGB rgb = new RGB(r, 0, 0);
                 String s = " -fx-color: " + rgb.toWeb();
                 vSlider.setStyle(s);
-*/
-                //textR.setText(String.valueOf(vSlider.getValue()));
+               //textR.setText(String.valueOf(vSlider.getValue()));
 
             }
         });
+        */
     }
 
     @FXML
     public void onClickMethod(){
         button.setText("Thanks!");
+        textR.setText("040");
     }
 
+    /*
     @FXML
     private Slider vSlider;
-
+*/
 
     public void changeColor(MouseEvent mouseEvent) {
-        int h = (int)vSlider.getValue();
+       /* int h = (int)vSlider.getValue();
         HSV hsv = new HSV(h, 1.0, 1.0);
         RGB rgb = ColorConverter.HSVtoRGB(hsv);
         String s = ".slider:hover { -fx-color: " + rgb.toWeb() + ";}";
         vSlider.setStyle(s);
+        */
     }
 }
