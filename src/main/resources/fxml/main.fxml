@@ -41,7 +41,8 @@
                                         <ChoiceBox fx:id="chip" prefWidth="150.0" GridPane.columnIndex="1" />
                                         <ChoiceBox prefWidth="150.0" GridPane.columnIndex="2" />
                                         <CheckBox mnemonicParsing="false" text="Процесор" GridPane.rowIndex="1" />
-                                        <Button fx:id="parse" onAction="#onClickMethod" alignment="CENTER" mnemonicParsing="false" text="Parse" GridPane.rowIndex="2" />
+                                        <Button fx:id="parse" alignment="CENTER" mnemonicParsing="false" onAction="#onClickMethod" text="Parse" GridPane.rowIndex="2" />
+                                        <Button fx:id="tobase" onAction="#toBase" mnemonicParsing="false" text="To Base" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     </children>
                                 </GridPane>
                             </children></AnchorPane>

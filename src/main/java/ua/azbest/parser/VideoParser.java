@@ -1,79 +1,39 @@
 package ua.azbest.parser;
 
-import ua.azbest.part.Videocard;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import ua.azbest.part.Videocard;
 
-import javax.xml.stream.events.EndElement;
 import java.io.*;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Map;
+import java.net.URL;
+import java.util.*;
 
 public class VideoParser {
 
     private LinkedList<String> links;
-    private LinkedList<Videocard> videocards;
-    private HashSet<String> chipsets;
+    private LinkedList<Videocard> videocards = null;
+
 
     public VideoParser() {
         links = new LinkedList<>();
+    }
+
+    private void parse() {
         videocards = new LinkedList<>();
-        chipsets = new HashSet<>();
-    }
 
-    public HashSet<String> getChipsets() {
-        return chipsets;
-    }
+    //for (int i=)
 
-    public HashSet<String> getChipsetsFromFile() {
-        HashSet<String> hs = new HashSet<>();
-        LinkedList<Videocard> vc =  new LinkedList<>();
-
-        try (FileInputStream streamIn = new FileInputStream("videocards.dat");
-             ObjectInputStream objectinputstream = new ObjectInputStream(streamIn)) {
-
-            Videocard readCase = null;
-            do {
-                readCase = (Videocard) objectinputstream.readObject();
-                if(readCase != null){
-                    vc.add(readCase);
-                }
-            } while (readCase != null);
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        for (Videocard v:vc) {
-            HashMap<String, String> hm = v.getDetail();
-            for (Map.Entry<String, String> e: hm.entrySet()) {
-                if (e.getKey().equals("Графический чип"))
-                    chipsets.add(e.getKey());
-            }
-
-        }
-
-        return hs;
-    }
-
-    public void parse() {
-
-        chipsets.clear();
-
-        String firstPage = "http://hard.rozetka.com.ua/videocards/c80087/";
+        String firstPage = "http://hard.rozetka.com.ua/videocards/c80087/page=8/";
         Document doc = null;
         try {
             doc = Jsoup.connect(firstPage).get();
             Elements references = doc.select(".g-i-tile-i-title.clearfix");
 
-           // for (int i=0; i<references.size(); i++) {
-            for (int i=0; i<4; i++) {
+            //for (int i=0; i<5; i++) {
+            for (int i=0; i<references.size(); i++) {
+            //for (int i=0; i<3; i++) {
                 String link = references.get(i).children().select("a").attr("href") + "#tab=characteristics";
                 Document d = Jsoup.connect(link).get();
                 links.add(link);
@@ -92,85 +52,50 @@ public class VideoParser {
                     for (int k=0; k<el.size(); k++) {
                         String title = el.get(k).text();
                         String field = fields.get(k).text();
-                        if (title.equals("Графический чип"))
-                            chipsets.add(field);
                         det.put(title, field);
                     }
 
                     String fullName = d.select(".detail-tabs-i-title-inner").first().text();
                     String manufacture = fullName.split(" ")[0];
 
-                    Videocard v = new Videocard(fullName, manufacture, p, det);
+                    Videocard v = Videocard.newBuilder()
+                            .setFullName(fullName)
+                            .setManufacture(manufacture)
+                            .setPrice(p)
+                            .setChip(det.get("Графический чип"))
+                            .setFrequency(det.get("Частота памяти"))
+                            .setCore(det.get("Частота ядра"))
+                            .setVolume(det.get("Объем памяти"))
+                            .setCooling(det.get("Система охлаждения"))
+                            .setBit(det.get("Разрядность шины памяти"))
+                            .setMemory(det.get("Тип памяти"))
+                            .setDvi(det.get("Выходы DVI"))
+                            .setResolution(det.get("Максимально поддерживаемое разрешение"))
+                            .setApi3d(det.get("Поддерживаемые 3D API"))
+                            .setIface(det.get("Интерфейс"))
+                            .setPower(det.get("Дополнительное питание"))
+                            .setDimm(det.get("Размеры"))
+                            .setGarranty(det.get("Гарантия"))
+                            .setLink(link)
+                            .build();
+
+                    //Videocard v = new Videocard(fullName, manufacture, p, det);
                     videocards.add(v);
-                    //System.out.println(v);
-                }
-
-            }
-
-            System.out.println(links);
-            System.out.println("===============");
-            //System.out.println(videocards);
-
-
-            //* // serialize objacts
-
-            ObjectOutputStream oos = null;
-            FileOutputStream fout = null;
-            try{
-                FileOutputStream fileOut = new FileOutputStream("videocards.dat", true);
-                ObjectOutputStream ooos = new ObjectOutputStream(fileOut);
-                for (Videocard v: videocards)
-                    ooos.writeObject(v);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            } finally {
-                if(oos  != null){
-                    oos.close();
+                    System.out.println("V" + i + " was added");
                 }
             }
 
-            //*/
-
+//            System.out.println(links);
+            System.out.println(" page done.");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-//*/
-        /*
-        HashMap<String, String> prop = new HashMap<>();
 
-        Document doc = null;
-        try {
-            //doc = Jsoup.connect("http://hard.rozetka.com.ua/asus_gt730-2gd3/p1436042/#tab=characteristics").get();
-            doc = Jsoup.connect("http://hard.rozetka.com.ua/asus_turbo_gtx1080_8g/p9964049/#tab=characteristics").get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Element newsHeadlines = doc.select(".g-kit-price-uah").first();
-        //Element newsHeadlines = doc.select(".g-kit-total-price-uah").last();
-        //Element newsHeadlines = doc.select(".detail-price-uah").first();
-        //Elements newsHeadlines = doc.select(".g-kit-total-price-uah");
-        String price = newsHeadlines.text().replaceAll("[^0-9]", "");
+    }
 
-        Element eManufacture = doc.select(".detail-tabs-i-title-inner").first();
-        String manufacture = eManufacture.text().split(" ")[0];
-
-        Elements all = doc.select(".detail-chars-l");
-        Elements propValue = all.get(0).select(".detail-chars-l-i-field");
-        Elements propName = all.get(0).select(".detail-chars-l-i-title");
-        for (int i=0; i<propName.size(); i++) {
-            prop.put(propName.get(i).text(), propValue.get(i).text());
-        }
-
-        System.out.println(manufacture);
-
-
-        System.out.println(price);
-        System.out.println(prop);
-
-        //*/
-
-
-
+    public List<Videocard> getList() {
+        parse();
+        return videocards;
     }
 }
