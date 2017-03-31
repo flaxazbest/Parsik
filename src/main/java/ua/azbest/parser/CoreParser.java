@@ -25,7 +25,7 @@ public class CoreParser extends Parser {
     protected void parse() {
         cpu = new LinkedList<>();
 
-        String firstPage = "http://hard.rozetka.com.ua/processors/c80083/";
+        String firstPage = "http://hard.rozetka.com.ua/processors/c80083/page=3/";
         Document doc = null;
         try {
             doc = Jsoup.connect(firstPage).get();
@@ -57,7 +57,7 @@ public class CoreParser extends Parser {
                         det.put(title, field);
                     }
 
-                    String fullName = d.select("..pp-characteristics-tab-product-name").first().text();
+                    String fullName = d.select(".detail-tabs-i-title-inner").first().text();
 
                     Stone s = Stone.newBuilder()
                             .setFullName(fullName)

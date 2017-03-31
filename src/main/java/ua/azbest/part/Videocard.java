@@ -265,34 +265,6 @@ public class Videocard {
         this.link = link;
     }
 
-    @PrePersist
-    void prePersist() {
-    }
-
-    @PreUpdate
-    void preUpdate() {
-    }
-
-    @PreRemove
-    void preRemove() {
-    }
-
-    @PostLoad
-    void postLoad() {
-    }
-
-    @PostRemove
-    void postRemove() {
-    }
-
-    @PostUpdate
-    void postUpdate() {
-    }
-
-    @PostPersist
-    void postPersist() {
-    }
-
     @Override
     public String toString() {
         return "Videocard{" +
