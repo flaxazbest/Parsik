@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import ua.azbest.dao.CoreDAO;
 import ua.azbest.dao.VideocardDAO;
 import ua.azbest.parser.CoreParser;
 import ua.azbest.parser.VideoParser;
@@ -31,7 +32,8 @@ public class MainController {
 
     @FXML
     public void toBase() {
-        VideocardDAO.create(new VideoParser().getList());
+        //VideocardDAO.create(new VideoParser().getList());
+        CoreDAO.create(new CoreParser().getList());
     }
 
     @FXML
