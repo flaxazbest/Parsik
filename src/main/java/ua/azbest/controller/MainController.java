@@ -9,7 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import ua.azbest.dao.VideocardDAO;
+import ua.azbest.parser.CoreParser;
 import ua.azbest.parser.VideoParser;
+import ua.azbest.part.Videocard;
 
 public class MainController {
 
@@ -35,8 +37,8 @@ public class MainController {
     @FXML
     public void onClickMethod(){
         chb.setText("Thanks!");
-        VideoParser videoParser = new VideoParser();
-        videoParser.getList();
+        CoreParser coreParser = new CoreParser();
+        coreParser.getList();
     }
 
 }
